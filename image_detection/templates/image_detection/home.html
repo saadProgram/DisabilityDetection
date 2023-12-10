@@ -1,0 +1,28 @@
+{% extends "image_detection/base.html" %}
+
+{% block content %}
+<div class="container">
+    <legend class="border-bottom mb-4">Uploaded Images with Predictions</legend>
+    
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Predicted Disability</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for prediction in predictions %}
+                <tr>
+                    <td>
+                        <img src="{{ prediction.instance.image.url }}" class="img-thumbnail" width="100" alt="Uploaded Image">
+                    </td>
+                    <td>{{ prediction.predicted_class }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock content %}
