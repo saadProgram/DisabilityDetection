@@ -13,7 +13,7 @@ def detect_disability(request):
         if form.is_valid():
             instance = form.save()
             image_path = instance.image.path
-            model_path = 'v2_model_disability_detection.h5'
+            model_path = os.path.join(settings.BASE_DIR, 'Dataset', 'v2_model_disability_detection.h5')
             model = load_model(model_path)
             img = image.load_img(image_path, target_size=(150, 150))
             img_array = image.img_to_array(img)
